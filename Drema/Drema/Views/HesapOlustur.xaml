@@ -1,0 +1,223 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Drema.HesapOlustur">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextTransform" Value="None" />
+                <Setter Property="FontFamily" Value="Inter"/>
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="TextTransform" Value="None" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="Inter"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <RelativeLayout>
+        <Grid BackgroundColor="#FFFFFF" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="60" />
+                <RowDefinition x:Name="UsernameRow" Height="80" />
+                <RowDefinition Height="10" />
+                <RowDefinition x:Name="E_PostaRow" Height="80" />
+                <RowDefinition Height="10" />
+                <RowDefinition x:Name="PasswordRow" Height="10*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="12*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <Image x:Name="GeriBtn" WidthRequest="30" Source="arrow.png" HorizontalOptions="Start" BackgroundColor="Transparent">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GeriButton_Clicked"  NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" VerticalOptions="Start">
+                    <Label Text="Hesap Oluştur" FontAttributes="Bold" Style="{StaticResource LabelStyle}" FontSize="27" TextColor="#3E206D" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Grid>
+
+            <!-- User Name Entry -->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" x:Name="usernameInput" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <Label Text="Kullanıcı Adı" Style="{StaticResource LabelStyle}" TextColor="#3E206D"  />
+                    <Frame HeightRequest="20" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" BorderColor="#916DD5" CornerRadius="10" HasShadow="False">
+                        <Entry TextColor="Black" Margin="0,-20,0,-20" Unfocused="username_Unfocused" Focused="username_Focused" HorizontalOptions="FillAndExpand" x:Name="username" Placeholder="Kullanıcı Adınız" TextChanged="username_TextChanged" PlaceholderColor="#A698BC" Style="{StaticResource EntryStyle}" />
+                    </Frame>
+                    <StackLayout x:Name="UserToolTip" Orientation="Horizontal" IsVisible="False" Spacing="3">
+                        <BoxView Color="Red" WidthRequest="10" HeightRequest="10" CornerRadius="5" VerticalOptions="Center"/>
+                        <Label Text="Minimum 5 karakter uzunluğunda olmalıdır." TextColor="Red"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+            <!-- User Email Entry -->
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" x:Name="usermailInput" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <Label Text="E-Posta" Style="{StaticResource LabelStyle}" TextColor="#3E206D"/>
+                    <Frame HeightRequest="20" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" BorderColor="#916DD5" CornerRadius="10" HasShadow="False">
+                        <Entry TextColor="Black" Margin="0,-20,0,-20" TextChanged="usermail_TextChanged" Focused="usermail_Focused" Unfocused="usermail_Unfocused" HorizontalOptions="FillAndExpand" x:Name="usermail" Placeholder="E-Posta Adresiniz" PlaceholderColor="#A698BC" Style="{StaticResource EntryStyle}" />
+                    </Frame>
+                    <StackLayout x:Name="MailToolTip" Orientation="Horizontal" IsVisible="False" Spacing="3">
+                        <BoxView Color="Red" WidthRequest="10" HeightRequest="10" CornerRadius="5" VerticalOptions="Center"/>
+                        <Label Text="Lütfen geçerli bir e-posta adresi yazınız." TextColor="Red"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+            <!-- Password Entry -->
+            <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" x:Name="passwordInput" VerticalOptions="Start">
+                    <Label Text="Şifre" Style="{StaticResource LabelStyle}" TextColor="#3E206D" />
+
+                    <Frame HeightRequest="20" HorizontalOptions="FillAndExpand" BorderColor="#916DD5" CornerRadius="10" HasShadow="False">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Entry Grid.Column="0"
+                       Margin="0,-20,0,-20"
+                       HorizontalOptions="FillAndExpand"
+                       x:Name="password"
+                       Placeholder="Şifreniz"
+                       Focused="password_Focused" 
+                       Unfocused="password_Unfocused"
+                       TextChanged="password_TextChanged"
+                       IsPassword="True"
+                       PlaceholderColor="#A698BC"
+                                   TextColor="Black"
+                       Style="{StaticResource EntryStyle}" />
+
+                            <Image Grid.Column="1"
+                       Source="showhide.png" 
+                       VerticalOptions="Center">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ShowHidePassword"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </Frame>
+                    <StackLayout x:Name="PasswordToolTip" Orientation="Horizontal" IsVisible="False" Spacing="3">
+                        <BoxView Color="Red" WidthRequest="10" HeightRequest="10" CornerRadius="5" VerticalOptions="Center"/>
+                        <Label Text="Minimum 8 karakter uzunluğunda olmalıdır." TextColor="Red"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+            <!-- Checkbox and Acceptance Text -->
+            <Grid Grid.Row="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" Orientation="Horizontal">
+                    <CheckBox HorizontalOptions="Start" Color="#3E206D" x:Name="GizlilikSozlesmesiCheckBox"></CheckBox>
+                    <Label TextColor="#3E206D" VerticalOptions="Center" FontAttributes="Bold" Text="Gizlilik Sözleşmesini" TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GizlilikSozlesmesi_Click" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label HorizontalOptions="Start" Text="Kabul Ediyorum" Style="{StaticResource LabelStyle}" TextColor="#3E206D" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GizlilikSozlesmesi_Click" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Grid>
+
+            <!-- Create Account Button -->
+            <Grid Grid.Row="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <Button x:Name="HesapOlustur_Buton" Text="Hesap Oluştur" Clicked="HesapOlusturButton_Clicked" TextTransform="None" BackgroundColor="#916DD5" TextColor="#FFFFFF" CornerRadius="10" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </Grid>
+
+            <Grid Grid.Row="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Hesabın var mı?" Style="{StaticResource LabelStyle}" TextColor="#3E206D"  HorizontalOptions="End" VerticalOptions="End" Grid.Column="1" />
+                <Label TextDecorations="Underline" FontAttributes="Bold" Text="Giriş Yap" Style="{StaticResource LabelStyle}" TextColor="#3E206D"  HorizontalOptions="Start" VerticalOptions="End" Grid.Column="2" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GirisButton_Clicked"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+            <Grid Grid.Row="11">
+                <Label Text="© 2023 Drema. Tüm hakları saklıdır." Style="{StaticResource LabelStyle}" TextColor="#3E206D" FontSize="12" HorizontalOptions="Center" VerticalOptions="End" Grid.Row="4" />
+            </Grid>
+        </Grid>
+        <BoxView x:Name="OverlayBox" 
+                 BackgroundColor="Black"
+                 Opacity="0.5"
+                 IsVisible="False" 
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" 
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" 
+                 >
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayTapped" NumberOfTapsRequired="1" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- Popup Image -->
+        <Image x:Name="PopupImage" 
+               Source="succes.png"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" 
+               IsVisible="False"  
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.9}"
+               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" 
+                   />
+    </RelativeLayout>
+</ContentPage> 

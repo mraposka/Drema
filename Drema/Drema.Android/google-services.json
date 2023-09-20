@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "361811492097",
+    "project_id": "drema-4fe69",
+    "storage_bucket": "drema-4fe69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361811492097:android:1f4a4ac309acf060b86f00",
+        "android_client_info": {
+          "package_name": "com.drema.ruya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361811492097-eo0dqeae0f8fq4kde829fkq1s658s1ks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM7BIPuAYr2zklC7BGUGKaRB3NIORHdaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361811492097-eo0dqeae0f8fq4kde829fkq1s658s1ks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

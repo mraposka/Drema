@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Drema.GirisYap">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextTransform" Value="None" />
+                <Setter Property="FontFamily" Value="Inter"/>
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="TextTransform" Value="None" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="Inter"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#FFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1"> 
+                    <Image x:Name="GeriBtn" WidthRequest="30" Source="https://lavirarocket.com/arrow.png" HorizontalOptions="Start" BackgroundColor="Transparent">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GeriButton_Clicked"  NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" VerticalOptions="Start">
+                    <Label Text="Giriş Yap" FontAttributes="Bold" Style="{StaticResource LabelStyle}" FontSize="27" TextColor="#3E206D"  VerticalOptions="CenterAndExpand" Grid.Column="1" />
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/> 
+                    <ColumnDefinition Width="90*"/> 
+                    <ColumnDefinition Width="5*"/> 
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" x:Name="qwe" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <StackLayout x:Name="stack">
+                        <Label Text="Kullanıcı Adı" Style="{StaticResource LabelStyle}" TextColor="#3E206D"  />
+                        <Frame HeightRequest="20" HorizontalOptions="FillAndExpand" x:Name="userFrame" BackgroundColor="Transparent" BorderColor="#916DD5" CornerRadius="10"  HasShadow="False"  >
+                            <Entry TextColor="Black" Margin="0,-20,0,-20" HorizontalOptions="FillAndExpand" x:Name="username" Placeholder="Kullanıcı Adınız" TextChanged="username_TextChanged" PlaceholderColor="#A698BC" Style="{StaticResource EntryStyle}" />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </Grid> 
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                        <Label Text="Şifre" Style="{StaticResource LabelStyle}" TextColor="#3E206D" />
+
+                        <Frame HeightRequest="20" HorizontalOptions="FillAndExpand" BorderColor="#916DD5" CornerRadius="10" HasShadow="False">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Entry Grid.Column="0"
+                       Margin="0,-20,0,-20"
+                       HorizontalOptions="FillAndExpand"
+                       x:Name="password"
+                       Placeholder="Şifreniz"
+                       TextChanged="password_TextChanged"
+                       IsPassword="True"
+                       PlaceholderColor="#A698BC"
+                       Style="{StaticResource EntryStyle}" TextColor="Black"/>
+
+                                <Image Grid.Column="1"
+                       Source="showhide.png" 
+                       VerticalOptions="Center">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ShowHidePassword"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+
+            </Grid>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout></StackLayout>
+                <Button Grid.Column="1" Text="Giriş Yap" x:Name="GirisBtn" Clicked="GirisButton_Clicked" TextTransform="None" BackgroundColor="#DADADA" TextColor="#FFFFFF" CornerRadius="10" HorizontalOptions="FillAndExpand" />
+                <StackLayout></StackLayout>
+            </Grid>
+            <Grid Grid.Row="8">
+                <StackLayout WidthRequest="320">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label Text="Hesabın yok mu?" Style="{StaticResource LabelStyle}" TextColor="#3E206D" VerticalOptions="Center">
+                        </Label>
+                        <Label x:Name="KayitBtn" Text="Kayıt Ol" FontAttributes="Bold" TextDecorations="Underline" Style="{StaticResource LabelStyle}" TextColor="#3E206D" VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="KayıtOlButton_Clicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+
+                <Label Text="© 2023 Drema. Tüm hakları saklıdır." Style="{StaticResource LabelStyle}" TextColor="#3E206D" FontSize="12" HorizontalOptions="Center" VerticalOptions="End" />
+            </Grid>
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

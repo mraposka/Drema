@@ -1,0 +1,108 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Drema.Anasayfa">
+    <RelativeLayout>
+        <!-- Arka plan resmi -->
+        <Image Source="anasayfa_background.png" Aspect="AspectFill"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" />
+
+        <!-- Ana içerikler -->
+        <Grid x:Name="MainGrid" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="27.5*" />
+                <RowDefinition Height="7.5*" />
+                <RowDefinition Height="40*" />
+            </Grid.RowDefinitions>
+
+            <!-- Resim ve Ayarlar -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="70*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="drema_nolabel.png" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Grid.Column="1" />
+                <Image Source="settings.png" WidthRequest="40" TranslationY="-20" HorizontalOptions="Start" VerticalOptions="Start" Grid.Column="2">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Settings_Tapped" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+            <!-- Frame ve Yorumla Button -->
+            <Grid Grid.Row="3" x:Name="RuyaInput">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="90*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Start" HeightRequest="200" CornerRadius="20" >
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Yorumla_Tapped"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                    <Editor x:Name="RuyaEditor" TextColor="Black" TextChanged="RuyaEditor_TextChanged" HeightRequest="130" FontFamily="Inter" PlaceholderColor="#B6B2B1" Placeholder="Rüyanı yaz" AutoSize="TextChanges" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Keyboard="Plain"/>
+                </Frame>
+                <Button TranslationY="150" WidthRequest="120" HeightRequest="40" Grid.Column="1" CornerRadius="9" x:Name="YourmlaButton" Clicked="YorumlaButton_Clicked" BackgroundColor="#DADADA" TextColor="#FFFFFF" FontFamily="Inter" Text="Yorumla" TextTransform="None" VerticalOptions="Start" HorizontalOptions="Center" />
+
+            </Grid>
+
+            <!-- Başlık -->
+            <Grid Grid.Row="4">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="90*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Column="1" x:Name="RuyaTitle" Text="" HorizontalOptions="Start" FontFamily="Inter" FontSize="18" VerticalOptions="Center" FontAttributes="Bold" TextColor="#3E206D" />
+            </Grid>
+            <!-- RuyaList -->
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+
+                <ScrollView  Grid.Column="1">
+                    <StackLayout x:Name="RuyaList" ChildAdded="RuyaList_ChildAdded">
+
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </Grid>
+
+        <!-- Overlay -->
+        <BoxView x:Name="OverlayBox" 
+                 BackgroundColor="Black"
+                 Opacity="0.5"
+                 IsVisible="False"   
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" 
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" 
+                 >
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayTapped" NumberOfTapsRequired="1" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- Popup Image -->
+        <Image x:Name="PopupImage" 
+               Source="yorum_sent.png"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" 
+               IsVisible="False" 
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.9}"
+               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" 
+                   />
+
+    </RelativeLayout>
+</ContentPage>

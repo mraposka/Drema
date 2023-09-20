@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Drema.ProfilAyarlari">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextTransform" Value="None" />
+                <Setter Property="FontFamily" Value="Inter"/>
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="TextTransform" Value="None" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="Inter"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#FFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="25*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <Image x:Name="GeriBtn" WidthRequest="30" Source="arrow.png" HorizontalOptions="Start" BackgroundColor="Transparent">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GeriButton_Clicked"  NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" VerticalOptions="End">
+                    <Label Text="Profil Ayarları" HorizontalOptions="Start" FontAttributes="Bold" Style="{StaticResource LabelStyle}" FontSize="27" TextColor="#3E206D"  VerticalOptions="CenterAndExpand" Grid.Column="1" />
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                    <Label Text="Kullanıcı Adı" Style="{StaticResource LabelStyle}" TextColor="#3E206D"  />
+                    <Frame HeightRequest="20" HorizontalOptions="FillAndExpand" BorderColor="#916DD5" CornerRadius="10" HasShadow="False">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Entry Grid.Column="0"
+                                   TextColor="Black"
+                           Margin="0,-20,0,-20"
+                           HorizontalOptions="FillAndExpand"
+                           x:Name="username"
+                           Placeholder="Kullanıcı Adınızı Girin"  
+                           PlaceholderColor="#A698BC"
+                           Style="{StaticResource EntryStyle}" />
+
+                            <Image Grid.Column="1" Source="edit.png" VerticalOptions="Center">
+
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="UserNameEdit"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                    <Label Text="E-Posta" Style="{StaticResource LabelStyle}" TextColor="#3E206D"  />
+                    <Frame HeightRequest="20" HorizontalOptions="FillAndExpand" BorderColor="#916DD5" CornerRadius="10" HasShadow="False">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Entry Grid.Column="0"
+                                   TextColor="Black"
+                           Margin="0,-20,0,-20"
+                           HorizontalOptions="FillAndExpand"
+                           x:Name="usermail"
+                           Placeholder="E-Postanızı Girin"  
+                           PlaceholderColor="#A698BC"
+                           Style="{StaticResource EntryStyle}" />
+
+                            <Image Grid.Column="1" Source="edit.png" VerticalOptions="Center">
+
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="UserMailEdit"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                        <Label Text="Şifre" Style="{StaticResource LabelStyle}" TextColor="#3E206D" />
+
+                        <Frame HeightRequest="20" HorizontalOptions="FillAndExpand" BorderColor="#916DD5" CornerRadius="10" HasShadow="False">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Entry Grid.Column="0"
+                                       TextColor="Black"
+                                       Focused="password_TextChanged"
+                       Margin="0,-20,0,-20"
+                       HorizontalOptions="FillAndExpand"
+                       x:Name="password"
+                       Placeholder="Şifrenizi Girin" 
+                       IsPassword="True"
+                       PlaceholderColor="#A698BC"
+                       Style="{StaticResource EntryStyle}" />
+
+                                <Image Grid.Column="1" Source="edit.png"  VerticalOptions="Center">
+
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PasswordEdit"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+
+            </Grid>
+            <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Button  Text="Değişiklikleri Kaydet" x:Name="KaydetButton" Clicked="KaydetButton_Clicked" TextTransform="None" BackgroundColor="#916DD5" BorderWidth="1" TextColor="White" CornerRadius="10" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Button  Text="Çıkış Yap" x:Name="CikisButton" Clicked="CikisButton_Clicked" TextTransform="None" BorderColor="Red" BorderWidth="1" BackgroundColor="Transparent" TextColor="Red" CornerRadius="10" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <Label Grid.Row="9" Text="© 2023 Drema. Tüm hakları saklıdır." Style="{StaticResource LabelStyle}" TextColor="#3E206D" FontSize="12" HorizontalOptions="Center" VerticalOptions="End" />
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

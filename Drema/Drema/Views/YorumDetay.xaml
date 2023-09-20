@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Drema.YorumDetay">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextTransform" Value="None" />
+                <Setter Property="FontFamily" Value="Inter"/>
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="TextTransform" Value="None" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="Inter"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#FFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="25*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <Image x:Name="GeriBtn" WidthRequest="30" Source="arrow.png" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="Transparent">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GeriButton_Clicked"  NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" VerticalOptions="End">
+                    <Label  x:Name="ruyaTtitle" Text="title" HorizontalOptions="Start" FontAttributes="Bold" Style="{StaticResource LabelStyle}" FontSize="27" TextColor="#3E206D"  VerticalOptions="CenterAndExpand" Grid.Column="1" />
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="4" Grid.RowSpan="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <ScrollView VerticalScrollBarVisibility="Always" HorizontalOptions="Fill" VerticalOptions="Fill">
+                        <Label x:Name="ruyaDetail" Text="ruyaDetail" Style="{StaticResource LabelStyle}" TextColor="#3E206D"  />
+                    </ScrollView>
+                </StackLayout>
+            </Grid>
+
+
+            <Grid Grid.Row="9" IsVisible="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Button  Text="Yorumu Paylaş" x:Name="PaylasButton" Clicked="PaylasButton_Clicked" TextTransform="None" BackgroundColor="#916DD5" BorderWidth="1" TextColor="White" CornerRadius="10" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Button  Text="Yorumu Sil" x:Name="CikisButton" Clicked="SilButton_Clicked" TextTransform="None" BorderColor="Red" BorderWidth="1" BackgroundColor="Transparent" TextColor="Red" CornerRadius="10" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <Label Grid.Row="10" Text="© 2023 Drema. Tüm hakları saklıdır." Style="{StaticResource LabelStyle}" TextColor="#3E206D" FontSize="12" HorizontalOptions="Center" VerticalOptions="End" />
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

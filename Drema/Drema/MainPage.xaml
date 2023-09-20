@@ -1,0 +1,46 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Drema.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <GradientStopCollection x:Key="GradientStops">
+                <GradientStop Color="#916DD5" Offset="0" />
+                <GradientStop Color="#3E206D" Offset="1" />
+            </GradientStopCollection>
+
+            <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="0,1" GradientStops="{StaticResource GradientStops}" />
+            <Style TargetType="Button" x:Key="ButtonStyle">
+                <Setter Property="TextTransform" Value="None" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.95" />
+                                    <Setter Property="Opacity" Value="0.8" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Background="{StaticResource BackgroundGradient}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Spacing="10" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Image Source="dremaw.png" WidthRequest="300" HeightRequest="300" HorizontalOptions="Center" Margin="0,50,0,0" />
+            <Button x:Name="GirisYapButton"  Text="Giriş Yap" Clicked="GirisYapButton_Clicked" TextColor="White" Style="{StaticResource ButtonStyle}" BackgroundColor="#916DD5" CornerRadius="10" Margin="0,200,0,0" />
+            <Button x:Name="HesapOlusturButton" Text="Hesap Oluştur"  Style="{StaticResource ButtonStyle}" BackgroundColor="Transparent" CornerRadius="10" TextColor="#E4CDFF" BorderColor="#E4CDFF" BorderWidth="1" Clicked="HesapOlusturButton_Clicked"/>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
