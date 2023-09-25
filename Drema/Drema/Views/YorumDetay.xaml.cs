@@ -53,7 +53,7 @@ namespace Drema
                 };
                 var content = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
-                var response = await client.PostAsync("https://lavirarocket.com/api/ruya_tabir/update.php", content);
+                var response = await client.PostAsync("https://" + Singleton.apiURL + "/api/ruya_tabir/update.php", content);
                 if (App.Current.MainPage is NavigationPage navigationPage && navigationPage.CurrentPage is Anasayfa anasayfa)
                 {
                     anasayfa.RefreshTabirs();

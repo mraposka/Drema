@@ -31,7 +31,7 @@ namespace Drema
                 Drema.Resources.Singleton singleton = new Drema.Resources.Singleton();
                 using (var client = new HttpClient())
                 {
-                    string url = "https://lavirarocket.com/api/ruya_user/create.php";
+                    string url = "https://"+Singleton.apiURL+"/api/ruya_user/create.php";
                     var newUser = new
                     {
                         user_name = userName,

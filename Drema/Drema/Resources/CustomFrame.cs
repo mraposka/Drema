@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System;
 using Drema;
+using Drema.Resources;
 
 public class CustomFrame : ContentView
 {
@@ -150,7 +151,7 @@ public class CustomFrame : ContentView
     void statusUpdate(StringContent content)
     {
         HttpClient client = new HttpClient();
-        client.PostAsync("https://lavirarocket.com/api/ruya_tabir/update.php", content).Wait();
+        client.PostAsync("https://"+Singleton.apiURL+"/api/ruya_tabir/update.php", content).Wait();
     }
     public class Ruya
     {

@@ -9,6 +9,7 @@ namespace Drema.Resources
     public class Singleton
     { 
         public bool tokenUpdated=false;
+        public static string apiURL = "drema.info";
         public string CalculateSHA256Hash(string input)
         { 
             using (SHA256 sha256 = SHA256.Create())

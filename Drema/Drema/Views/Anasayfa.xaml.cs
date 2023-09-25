@@ -99,7 +99,7 @@ namespace Drema
                 {
                     using (var client = new HttpClient())
                     {
-                        string url = "https://lavirarocket.com/api/ruya_user/update.php";
+                        string url = "https://"+Singleton.apiURL+"/api/ruya_user/update.php";
                         User newUser = new User
                         {
                             user_id = Preferences.Get("UserId", 0).ToString(),
@@ -317,7 +317,7 @@ namespace Drema
             {
                 var jsonString = JsonConvert.SerializeObject(ruya);
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync("https://lavirarocket.com/api/ruya_tabir/create.php", content);
+                var response = await client.PostAsync("https://"+Singleton.apiURL+"/api/ruya_tabir/create.php", content);
                 if (response.StatusCode.ToString() == "Created")
                 {
                     RuyaEditor.Text = "";
@@ -367,7 +367,7 @@ namespace Drema
                 };
 
                 var content = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
-                var response = await client.PostAsync("https://lavirarocket.com/api/ruya_tabir/read_one.php", content);
+                var response = await client.PostAsync("https://"+Singleton.apiURL+"/api/ruya_tabir/read_one.php", content);
                 var responseString = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {

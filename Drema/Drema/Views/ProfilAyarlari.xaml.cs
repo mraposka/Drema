@@ -92,7 +92,7 @@ namespace Drema
             {
                 using (var client = new HttpClient())
                 {
-                    string url = "https://lavirarocket.com/api/ruya_user/update.php";
+                    string url = "https://" + Singleton.apiURL + "/api/ruya_user/update.php";
                     Drema.Resources.Singleton singleton = new Drema.Resources.Singleton();
                     UpdateUserMail_Class newUser = new UpdateUserMail_Class
                     {
@@ -102,8 +102,7 @@ namespace Drema
 
                     // JSON string'e çevir
                     var json = JsonConvert.SerializeObject(newUser);
-
-                    DisplayAlert("Q", json, "OK");
+                     
                     // HTTP POST isteği oluştur
                     var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
 
@@ -137,7 +136,7 @@ namespace Drema
             {
                 using (var client = new HttpClient())
                 {
-                    string url = "https://lavirarocket.com/api/ruya_user/update.php";
+                    string url = "https://"+Singleton.apiURL+"/api/ruya_user/update.php";
                     Drema.Resources.Singleton singleton = new Drema.Resources.Singleton();
                     UpdateUserPass_Class newUser = new UpdateUserPass_Class
                     {
@@ -147,8 +146,7 @@ namespace Drema
 
                     // JSON string'e çevir
                     var json = JsonConvert.SerializeObject(newUser);
-
-                    DisplayAlert("Q", json, "OK");
+                     
 
                     // HTTP POST isteği oluştur
                     var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
@@ -182,7 +180,7 @@ namespace Drema
             {
                 using (var client = new HttpClient())
                 {
-                    string url = "https://lavirarocket.com/api/ruya_user/update.php";
+                    string url = "https://"+Singleton.apiURL+"/api/ruya_user/update.php";
                     Drema.Resources.Singleton singleton = new Drema.Resources.Singleton();
                     UpdateUserName_Class newUser = new UpdateUserName_Class
                     {
@@ -192,8 +190,7 @@ namespace Drema
 
                     // JSON string'e çevir
                     var json = JsonConvert.SerializeObject(newUser);
-
-                    DisplayAlert("Q", json, "OK");
+                     
 
                     // HTTP POST isteği oluştur
                     var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));

@@ -1,5 +1,6 @@
 ﻿using Android.Runtime;
-using Android.Util; 
+using Android.Util;
+using Drema.Resources;
 using Newtonsoft.Json; 
 using System;
 using System.Collections.Generic;
@@ -107,7 +108,7 @@ namespace Drema
                     {
                         GirisBtn.BackgroundColor = Color.FromHex("#DADADA");
                         bool isLoggedIn = false;
-                        string url = "https://lavirarocket.com/api/ruya_user/read.php";
+                        string url = "https://"+Singleton.apiURL+"/api/ruya_user/read.php";
                         Drema.Resources.Singleton singleton = new Drema.Resources.Singleton();
                         List<User> users = await GetUsersAsync(url);
                         if (users != null)
